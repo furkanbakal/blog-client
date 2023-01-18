@@ -1,0 +1,63 @@
+<p-toolbar>
+    <div class="p-toolbar-group-start">
+    </div>
+
+    <div class="p-toolbar-group-end">
+        <p-button label="Yeni Ekle" icon="pi pi-plus" (click)="showForm()"></p-button>
+    </div>
+</p-toolbar>
+<p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Fotoğraf</th>
+            <th>Aktiflik</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                <p-image [src]="item.photo" alt="Image" width="125" height="50"></p-image>
+            </td>
+            <td>{{ item.isActive ? 'Aktif' : 'Pasif'}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<p-dialog header="Blog Ekleme Formu" [(visible)]="display">
+    <div class="field">
+        <label for="firstname1">Başlık</label>
+        <input id="firstname1" type="text" [(ngModel)]="blog.title"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field">
+        <label for="content">İçerik</label>
+        <textarea pInputTextarea [(ngModel)]="blog.description" id="content"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+    </div>
+    <div class="field">
+        <label for="image">Resim</label>
+        <p-fileUpload name="demo" accept="image/*"
+        [showUploadButton]="uploadButton"
+        (onSelect)="onSelect($event)"
+        (onClear)="onClear()"
+            >
+            <ng-template pTemplate="content">
+                <ul *ngIf="blog.photo">
+                    <li>{{blog?.photo?.name}} - {{blog?.photo?.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+    </div>
+    <div class="field">
+        <label for="content">Aktiflik</label>
+        <p-inputSwitch [(ngModel)]="blog.isActive" id="content"></p-inputSwitch>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button label="Kaydet" icon="pi pi-plus" (click)="saveBlog()"></p-button>
+    </ng-template>
+</p-dialog>

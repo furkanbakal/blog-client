@@ -1,0 +1,9 @@
+.content {
+    max-height: 520px;
+    overflow-y: auto;
+}
+
+.sidebar {
+    max-height: 520px;
+    overflow-y: auto;
+}
