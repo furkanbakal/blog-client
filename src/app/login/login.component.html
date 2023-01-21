@@ -1,0 +1,28 @@
+<div class="login">
+   <div class="card">
+    <h3 style="text-align: center">SENAM YAZILIM</h3>
+    <div class="field grid">
+        <label for="email" class="col-fixed" style="width:100px">E-Posta</label>
+        <div class="col">
+            <input id="email" type="email"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid
+              surface-border border-round appearance-none outline-none focus:border-primary"
+              [(ngModel)]="email">
+        </div>
+    </div>
+    <div class="field grid">
+        <label for="lastname3" class="col-fixed" style="width:100px">Şifre</label>
+        <div class="col">
+            <input id="lastname3" type="password"
+            class="text-base text-color surface-overlay
+            p-2 border-1 border-solid surface-border border-round
+            appearance-none outline-none focus:border-primary"
+            [(ngModel)]="password">
+        </div>
+    </div>
+    <button pButton type="button" label="Giriş Yap" class="p-button-sm"
+    [style]="{'width': '100%'}"
+    (click)="login()"></button>
+   </div>   
+</div>
+
